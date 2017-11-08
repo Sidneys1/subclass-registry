@@ -21,12 +21,18 @@ Create a registry by changing it to:
 #include "subclass_registry.hpp"
 
 class Base {
+public:
+    virtual ~Base() = default;
 };
 
 class Subclass1 : public SubclassRegistrar<Base, Subclass1> {
+public:
+    Subclass1() { /* CANNOT be `= default` */ }
 };
 
 class Subclass2 : public SubclassRegistrar<Base, Subclass2> {
+public:
+    Subclass2() { /* CANNOT be `= default` */ }
 };
 ```
 
